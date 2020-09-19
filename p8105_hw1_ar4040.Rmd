@@ -4,10 +4,10 @@ author: Adarsh Ramakrishnan
 output: github_document
 ---
 
-This is my homework 1 solution
+This is my homework 1 solution:
 
 
-Load tidyverse library
+Loading tidyverse library:
 
 ```{r libraries}
 library(tidyverse)
@@ -16,7 +16,7 @@ library(tidyverse)
 
 ## Problem 1
 
-Creating the specified dataframe
+Creating the specified dataframe:
 
 ```{r dataframe}
 hw1_p1_df = 
@@ -28,7 +28,7 @@ hw1_p1_df =
 )
 ```
 
-Finding mean of each variable in hw1_p1_df
+Finding mean of each variable in hw1_p1_df:
 
 ```{r mean}
 mean(pull(hw1_p1_df, sample_normal))
@@ -65,7 +65,7 @@ as.numeric(as.factor(pull(hw1_p1_df, sample_gt0))) * pull(hw1_p1_df, sample_norm
 
 ## Problem 2
 
-Loading and running the penguins dataset
+Loading and running the penguins dataset:
 
 ```{r}
 data("penguins", package = "palmerpenguins")
@@ -89,12 +89,15 @@ ncol(penguins)
 
 The dataset contains 344 columns (observations or penguins) and 8 rows (variables about the penguins)
 
+
+Finding the mean flipper length: 
+
 ```{r}
-mean(pull(penguins,flipper_length_mm))
+mean(pull(penguins,flipper_length_mm), na.rm = TRUE)
 ```
+After removing the missing values, the mean flipper length was calculated to be 200.9152 mm
 
-
-Making the scatterplot of flipper length
+Making the scatterplot of flipper length:
 
 ```{r}
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
