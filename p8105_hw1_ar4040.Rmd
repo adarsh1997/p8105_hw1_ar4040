@@ -63,5 +63,49 @@ as.factor(pull(hw1_p1_df, sample_gt0)) * pull(hw1_p1_df, sample_normal)
 as.numeric(as.factor(pull(hw1_p1_df, sample_gt0))) * pull(hw1_p1_df, sample_normal)
 ```
 
-
 ## Problem 2
+
+Loading and running the penguins dataset
+
+```{r}
+data("penguins", package = "palmerpenguins")
+
+penguins
+```
+There are 8 variables and 344 observations in the dataset. The variables include -
+1)species (character variable)
+2)island (character variable)
+3)bill_length_mm (numeric variable)
+4)bill_depth_mm (numeric variable)
+5)flipper_length_mm (numeric variable)
+6)body_mass_g (numeric variable)
+7)sex (character variable: values are male or female)
+8)year (numeric variable)
+
+```{r}
+nrow(penguins)
+ncol(penguins)
+```
+
+The dataset contains 344 columns (observations or penguins) and 8 rows (variables about the penguins)
+
+```{r}
+mean(pull(penguins,flipper_length_mm))
+```
+
+
+Making the scatterplot of flipper length
+
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
+
+
+
+
+
+
+
+
+
+
