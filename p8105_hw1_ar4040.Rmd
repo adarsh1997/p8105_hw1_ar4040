@@ -5,3 +5,63 @@ output: github_document
 ---
 
 This is my homework 1 solution
+
+
+Load tidyverse library
+
+```{r libraries}
+library(tidyverse)
+```
+
+
+## Problem 1
+
+Creating the specified dataframe
+
+```{r dataframe}
+hw1_p1_df = 
+  tibble(
+    sample_normal = rnorm(10),
+    sample_gt0 = sample_normal > 0,
+    character_vector = c("h","i","j","k","l","m","n","o","p","q"),
+    factor_vector = factor(c("low","mod","high","low","mod","high","low","mod","high","low"))
+)
+```
+
+Finding mean of each variable in hw1_p1_df
+
+```{r mean}
+mean(pull(hw1_p1_df, sample_normal))
+mean(pull(hw1_p1_df, sample_gt0))
+mean(pull(hw1_p1_df, character_vector))
+mean(pull(hw1_p1_df, factor_vector))
+```
+
+For the sample_normal, you get an actual mean since they are all numeric.
+For the logical vector, all the true and false are converted into 0s and 1s, after which it takes the mean.
+Mean isn't calculated for character or factor vectors. 
+
+```{r as_numeric}
+as.numeric(pull(hw1_p1_df, sample_normal))
+as.numeric(pull(hw1_p1_df, sample_gt0))
+as.numeric(pull(hw1_p1_df, character_vector))
+as.numeric(pull(hw1_p1_df, factor_vector))
+```
+
+The numbers in sample_normal remain as is. 
+The logical vector is converted into 0s and 1s as mentioned above
+The character vector cannot be converted into numbers
+The factor vector is converted into some unintuitive numbers
+
+This explains what happens when you try to take the mean for the logical as you can see the 0 and 1 conversion.
+For character vector, there is no way to convert them into numbers and so no way to take the mean.
+For the factor vector, there appears to be a way to convert them into numbers. However, the mean function does not return a mean in the previous code chunk. 
+
+```{r vector_conv}
+as.numeric(pull(hw1_p1_df, sample_gt0)) * pull(hw1_p1_df, sample_normal)
+as.factor(pull(hw1_p1_df, sample_gt0)) * pull(hw1_p1_df, sample_normal)
+as.numeric(as.factor(pull(hw1_p1_df, sample_gt0))) * pull(hw1_p1_df, sample_normal)
+```
+
+
+## Problem 2
